@@ -1,0 +1,306 @@
+[gd_scene load_steps=90 format=3 uid="uid://cofm71akoe8is"]
+
+[ext_resource type="Texture2D" uid="uid://2o0h40y4qydu" path="res://assets/character/__pauper_girl_light_skin_tone_idle_side_000.png" id="1_51r6m"]
+[ext_resource type="Script" path="res://scenes/character/player.gd" id="1_y82qu"]
+[ext_resource type="Texture2D" uid="uid://ct7m8fennetq5" path="res://assets/character/__pauper_girl_light_skin_tone_idle_side_001.png" id="2_3vtcl"]
+[ext_resource type="Texture2D" uid="uid://cpjog1jrep5mj" path="res://assets/character/__pauper_girl_light_skin_tone_idle_side_002.png" id="3_t5kbh"]
+[ext_resource type="Texture2D" uid="uid://dj1w3exrbe8tp" path="res://assets/character/__pauper_girl_light_skin_tone_idle_side_003.png" id="4_7h160"]
+[ext_resource type="Texture2D" uid="uid://dgsdrnpq20ibk" path="res://assets/character/__pauper_girl_light_skin_tone_idle_side_004.png" id="5_00iox"]
+[ext_resource type="Texture2D" uid="uid://batesahor18s5" path="res://assets/character/__pauper_girl_light_skin_tone_idle_side_005.png" id="6_6s1y1"]
+[ext_resource type="Texture2D" uid="uid://c86fw52i3qsdw" path="res://assets/character/__pauper_girl_light_skin_tone_idle_side_006.png" id="7_80v47"]
+[ext_resource type="Texture2D" uid="uid://brmnkxrc6by34" path="res://assets/character/__pauper_girl_light_skin_tone_idle_side_007.png" id="8_dol7p"]
+[ext_resource type="Texture2D" uid="uid://vlofcfoa5rar" path="res://assets/character/__pauper_girl_light_skin_tone_idle_side_008.png" id="9_vvfqb"]
+[ext_resource type="Texture2D" uid="uid://cdlxta7sjl20w" path="res://assets/character/__pauper_girl_light_skin_tone_idle_side_009.png" id="10_61f3r"]
+[ext_resource type="Texture2D" uid="uid://c8vd21ncpjadk" path="res://assets/character/__pauper_girl_light_skin_tone_idle_side_010.png" id="11_8rm7m"]
+[ext_resource type="Texture2D" uid="uid://ho3ub3w8670u" path="res://assets/character/__pauper_girl_light_skin_tone_idle_side_011.png" id="12_2fbwb"]
+[ext_resource type="Texture2D" uid="uid://dcefqc4j6bxt2" path="res://assets/character/__pauper_girl_light_skin_tone_idle_side_012.png" id="13_ey6tn"]
+[ext_resource type="Texture2D" uid="uid://de1840v5bxusy" path="res://assets/character/__pauper_girl_light_skin_tone_idle_side_013.png" id="14_geq0f"]
+[ext_resource type="Texture2D" uid="uid://d3t3jsdn07s7j" path="res://assets/character/__pauper_girl_light_skin_tone_idle_side_014.png" id="15_hf7ha"]
+[ext_resource type="Texture2D" uid="uid://b1dwlfgyr2wn7" path="res://assets/character/__pauper_girl_light_skin_tone_idle_side_015.png" id="16_a4iju"]
+[ext_resource type="Texture2D" uid="uid://chs5qfstnocs5" path="res://assets/character/__pauper_girl_light_skin_tone_idle_side_016.png" id="17_t63si"]
+[ext_resource type="Texture2D" uid="uid://tf1s8b3w8pet" path="res://assets/character/__pauper_girl_light_skin_tone_idle_side_017.png" id="18_g3i1p"]
+[ext_resource type="Texture2D" uid="uid://b7u8xy7e5gec" path="res://assets/character/__pauper_girl_light_skin_tone_idle_side_018.png" id="19_omfuh"]
+[ext_resource type="Texture2D" uid="uid://cqbqupds7q1ad" path="res://assets/character/__pauper_girl_light_skin_tone_idle_side_019.png" id="20_3ynun"]
+[ext_resource type="Texture2D" uid="uid://dxklsq72btqgo" path="res://assets/character/__pauper_girl_light_skin_tone_walk_000.png" id="21_6kmak"]
+[ext_resource type="Texture2D" uid="uid://bwv0f3g2nj6tu" path="res://assets/character/__pauper_girl_light_skin_tone_walk_001.png" id="22_cixy8"]
+[ext_resource type="Texture2D" uid="uid://dqihgwmaculpm" path="res://assets/character/__pauper_girl_light_skin_tone_walk_002.png" id="23_ro1is"]
+[ext_resource type="Texture2D" uid="uid://dwrq4nwibru2s" path="res://assets/character/__pauper_girl_light_skin_tone_walk_003.png" id="24_gxm15"]
+[ext_resource type="Texture2D" uid="uid://webmaarjtvgd" path="res://assets/character/__pauper_girl_light_skin_tone_walk_004.png" id="25_deo5t"]
+[ext_resource type="Texture2D" uid="uid://dkb5um5xs7g8j" path="res://assets/character/__pauper_girl_light_skin_tone_walk_005.png" id="26_im4yq"]
+[ext_resource type="Texture2D" uid="uid://dhq1genocibba" path="res://assets/character/__pauper_girl_light_skin_tone_walk_006.png" id="27_otaf5"]
+[ext_resource type="Texture2D" uid="uid://diy5sxbsi3l50" path="res://assets/character/__pauper_girl_light_skin_tone_walk_007.png" id="28_uf1e6"]
+[ext_resource type="Texture2D" uid="uid://di2joucwptqcu" path="res://assets/character/__pauper_girl_light_skin_tone_jump_cycle_000.png" id="29_kcu4c"]
+[ext_resource type="Texture2D" uid="uid://eb60n4wl0d58" path="res://assets/character/__pauper_girl_light_skin_tone_jump_cycle_001.png" id="30_igcio"]
+[ext_resource type="Texture2D" uid="uid://gw7q3av2wp8j" path="res://assets/character/__pauper_girl_light_skin_tone_jump_cycle_002.png" id="31_j48pj"]
+[ext_resource type="Texture2D" uid="uid://bal48tv1gcqcn" path="res://assets/character/__pauper_girl_light_skin_tone_jump_cycle_003.png" id="32_o7kmx"]
+[ext_resource type="Texture2D" uid="uid://b7qv6yjq6grd4" path="res://assets/character/__pauper_girl_light_skin_tone_jump_cycle_004.png" id="33_lgleb"]
+[ext_resource type="Texture2D" uid="uid://bc52nhdt0wk3h" path="res://assets/character/__pauper_girl_light_skin_tone_jump_cycle_005.png" id="34_vsia4"]
+[ext_resource type="Texture2D" uid="uid://d2h656nkxvtky" path="res://assets/character/__pauper_girl_light_skin_tone_jump_cycle_006.png" id="35_o66jf"]
+[ext_resource type="Texture2D" uid="uid://b7vo3na0pdtsi" path="res://assets/character/__pauper_girl_light_skin_tone_jump_cycle_007.png" id="36_d23p7"]
+[ext_resource type="Texture2D" uid="uid://bbh4mjcjekc3w" path="res://assets/character/__pauper_girl_light_skin_tone_jump_cycle_008.png" id="37_ppa30"]
+[ext_resource type="Texture2D" uid="uid://v4oue2l0s16y" path="res://assets/character/__pauper_girl_light_skin_tone_jump_cycle_009.png" id="38_hhfkg"]
+[ext_resource type="Texture2D" uid="uid://banj2lluok06m" path="res://assets/character/__pauper_girl_light_skin_tone_jump_cycle_010.png" id="39_t3wbo"]
+[ext_resource type="Texture2D" uid="uid://b868ucucv61yy" path="res://assets/character/__pauper_girl_light_skin_tone_jump_cycle_011.png" id="40_l8bgk"]
+[ext_resource type="Texture2D" uid="uid://c1cm113pbxt6e" path="res://assets/character/__pauper_girl_light_skin_tone_to_squat_000.png" id="42_12e0j"]
+[ext_resource type="Texture2D" uid="uid://clp7v6ph1qc62" path="res://assets/character/__pauper_girl_light_skin_tone_to_squat_001.png" id="43_elaog"]
+[ext_resource type="Texture2D" uid="uid://0yj508wv0kaw" path="res://assets/character/__pauper_girl_light_skin_tone_to_squat_002.png" id="43_p4p2y"]
+[ext_resource type="Texture2D" uid="uid://b6jj2ovffeoru" path="res://assets/character/__pauper_girl_light_skin_tone_to_squat_003.png" id="44_haj1t"]
+[ext_resource type="Texture2D" uid="uid://dxhp3id8pb5re" path="res://assets/character/__pauper_girl_light_skin_tone_to_squat_004.png" id="45_m8ov2"]
+[ext_resource type="Texture2D" uid="uid://33t0gd713ir1" path="res://assets/character/__pauper_girl_light_skin_tone_from_squat_000.png" id="46_i2ym6"]
+[ext_resource type="Texture2D" uid="uid://c62831m6okeit" path="res://assets/character/__pauper_girl_light_skin_tone_from_squat_001.png" id="47_pd7vc"]
+[ext_resource type="Texture2D" uid="uid://5wvs8xbn85a3" path="res://assets/character/__pauper_girl_light_skin_tone_from_squat_002.png" id="48_5ss34"]
+[ext_resource type="Texture2D" uid="uid://22d3m1vvnjxi" path="res://assets/character/__pauper_girl_light_skin_tone_from_squat_003.png" id="49_burq8"]
+[ext_resource type="Texture2D" uid="uid://cnls2slwkwsuv" path="res://assets/character/__pauper_girl_light_skin_tone_from_squat_004.png" id="50_mo08v"]
+[ext_resource type="Texture2D" uid="uid://3hduqafs1lle" path="res://assets/character/__pauper_girl_light_skin_tone_talking_000.png" id="52_fycys"]
+[ext_resource type="Texture2D" uid="uid://c01bi2r8wdncf" path="res://assets/character/__pauper_girl_light_skin_tone_talking_001.png" id="53_14eov"]
+[ext_resource type="Texture2D" uid="uid://dcvw4iqww4aio" path="res://assets/character/__pauper_girl_light_skin_tone_talking_002.png" id="54_vmx3y"]
+[ext_resource type="Texture2D" uid="uid://uycefoq0xyec" path="res://assets/character/__pauper_girl_light_skin_tone_talking_003.png" id="55_hslmf"]
+[ext_resource type="Texture2D" uid="uid://cwto5ab8a7lw8" path="res://assets/character/__pauper_girl_light_skin_tone_talking_004.png" id="56_qtw3j"]
+[ext_resource type="Texture2D" uid="uid://bs5xxwudvdhqe" path="res://assets/character/__pauper_girl_light_skin_tone_talking_005.png" id="57_mqs5e"]
+[ext_resource type="Texture2D" uid="uid://e775vgkbkfp6" path="res://assets/character/__pauper_girl_light_skin_tone_talking_006.png" id="58_dgoiv"]
+[ext_resource type="Texture2D" uid="uid://caayween507bv" path="res://assets/character/__pauper_girl_light_skin_tone_talking_007.png" id="59_xsv7o"]
+[ext_resource type="Texture2D" uid="uid://ce6h8k4dfvjj3" path="res://assets/character/__pauper_girl_light_skin_tone_talking_008.png" id="60_jlf5i"]
+[ext_resource type="Texture2D" uid="uid://cnm04xcm7dqrd" path="res://assets/character/__pauper_girl_light_skin_tone_talking_009.png" id="61_m6pv8"]
+[ext_resource type="Texture2D" uid="uid://beunk4udv5f8a" path="res://assets/character/__pauper_girl_light_skin_tone_spoon_whack_000.png" id="62_2rak5"]
+[ext_resource type="Texture2D" uid="uid://dn86jwnewcqw2" path="res://assets/character/__pauper_girl_light_skin_tone_spoon_whack_001.png" id="63_6h4vn"]
+[ext_resource type="Texture2D" uid="uid://dn408201otj55" path="res://assets/character/__pauper_girl_light_skin_tone_spoon_whack_002.png" id="64_11nhm"]
+[ext_resource type="Texture2D" uid="uid://b0qvpat06fqej" path="res://assets/character/__pauper_girl_light_skin_tone_spoon_whack_003.png" id="65_pmncd"]
+[ext_resource type="Texture2D" uid="uid://ck7u7at1gthjw" path="res://assets/character/__pauper_girl_light_skin_tone_spoon_whack_004.png" id="66_74iws"]
+[ext_resource type="Texture2D" uid="uid://1ad6qxywcym5" path="res://assets/character/__pauper_girl_light_skin_tone_spoon_whack_005.png" id="67_foqyo"]
+[ext_resource type="Texture2D" uid="uid://1povwmc0bk53" path="res://assets/character/__pauper_girl_light_skin_tone_spoon_whack_006.png" id="68_fpfar"]
+[ext_resource type="Texture2D" uid="uid://b4eftg2105dad" path="res://assets/character/__pauper_girl_light_skin_tone_spoon_whack_007.png" id="69_b7rfg"]
+[ext_resource type="Texture2D" uid="uid://b27s440kluf7d" path="res://assets/character/__pauper_girl_light_skin_tone_falling_000.png" id="70_21e0o"]
+[ext_resource type="Texture2D" uid="uid://cd1l7v2e2d0ww" path="res://assets/character/__pauper_girl_light_skin_tone_falling_001.png" id="71_wv31v"]
+[ext_resource type="Texture2D" uid="uid://byksfnvn7nn03" path="res://assets/character/__pauper_girl_light_skin_tone_falling_002.png" id="72_58ut1"]
+[ext_resource type="Texture2D" uid="uid://ht6iwih2utrk" path="res://assets/character/__pauper_girl_light_skin_tone_falling_003.png" id="73_l4fl8"]
+[ext_resource type="Texture2D" uid="uid://cakdbckeoh3ll" path="res://assets/character/__pauper_girl_light_skin_tone_falling_004.png" id="74_k87w8"]
+[ext_resource type="Texture2D" uid="uid://qkv3mhj2dti7" path="res://assets/character/__pauper_girl_light_skin_tone_falling_005.png" id="75_apodo"]
+[ext_resource type="Texture2D" uid="uid://bfkl374a8vmae" path="res://assets/character/__pauper_girl_light_skin_tone_falling_006.png" id="76_k21e5"]
+[ext_resource type="Texture2D" uid="uid://dfvqiy2v8rbhb" path="res://assets/character/__pauper_girl_light_skin_tone_falling_007.png" id="77_ex5wo"]
+[ext_resource type="Texture2D" uid="uid://qc21a688bcxw" path="res://assets/character/__pauper_girl_light_skin_tone_falling_008.png" id="78_hqm8f"]
+[ext_resource type="Texture2D" uid="uid://dq1vka216q217" path="res://assets/character/__pauper_girl_light_skin_tone_falling_009.png" id="79_2bqqx"]
+
+[sub_resource type="Animation" id="Animation_1jmcl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+
+[sub_resource type="Animation" id="Animation_x7e6o"]
+resource_name = "attack"
+length = 0.8
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [ExtResource("62_2rak5"), ExtResource("63_6h4vn"), ExtResource("64_11nhm"), ExtResource("65_pmncd"), ExtResource("66_74iws"), ExtResource("67_foqyo"), ExtResource("68_fpfar"), ExtResource("69_b7rfg")]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.8),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"stop_attacking"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_25w3t"]
+resource_name = "idle"
+length = 2.0
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [ExtResource("1_51r6m"), ExtResource("2_3vtcl"), ExtResource("3_t5kbh"), ExtResource("4_7h160"), ExtResource("5_00iox"), ExtResource("6_6s1y1"), ExtResource("7_80v47"), ExtResource("8_dol7p"), ExtResource("9_vvfqb"), ExtResource("10_61f3r"), ExtResource("11_8rm7m"), ExtResource("12_2fbwb"), ExtResource("13_ey6tn"), ExtResource("14_geq0f"), ExtResource("15_hf7ha"), ExtResource("16_a4iju"), ExtResource("17_t63si"), ExtResource("18_g3i1p"), ExtResource("19_omfuh"), ExtResource("20_3ynun")]
+}
+
+[sub_resource type="Animation" id="Animation_x1mi0"]
+resource_name = "jump"
+length = 1.2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [ExtResource("29_kcu4c"), ExtResource("30_igcio"), ExtResource("31_j48pj"), ExtResource("32_o7kmx"), ExtResource("33_lgleb"), ExtResource("34_vsia4"), ExtResource("35_o66jf"), ExtResource("36_d23p7"), ExtResource("37_ppa30"), ExtResource("38_hhfkg"), ExtResource("39_t3wbo"), ExtResource("40_l8bgk")]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"stop_jumping"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_nm4nb"]
+resource_name = "squat"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [ExtResource("42_12e0j"), ExtResource("43_elaog"), ExtResource("43_p4p2y"), ExtResource("44_haj1t"), ExtResource("45_m8ov2"), ExtResource("46_i2ym6"), ExtResource("47_pd7vc"), ExtResource("48_5ss34"), ExtResource("49_burq8"), ExtResource("50_mo08v")]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"stop_squating"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_hrkbl"]
+resource_name = "talk"
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [ExtResource("52_fycys"), ExtResource("53_14eov"), ExtResource("54_vmx3y"), ExtResource("55_hslmf"), ExtResource("56_qtw3j"), ExtResource("57_mqs5e"), ExtResource("58_dgoiv"), ExtResource("59_xsv7o"), ExtResource("60_jlf5i"), ExtResource("61_m6pv8")]
+}
+
+[sub_resource type="Animation" id="Animation_xdmq4"]
+resource_name = "walk"
+length = 0.8
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [ExtResource("21_6kmak"), ExtResource("22_cixy8"), ExtResource("23_ro1is"), ExtResource("24_gxm15"), ExtResource("25_deo5t"), ExtResource("26_im4yq"), ExtResource("27_otaf5"), ExtResource("28_uf1e6")]
+}
+
+[sub_resource type="Animation" id="Animation_7bcqt"]
+resource_name = "falling"
+length = 2.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [ExtResource("70_21e0o"), ExtResource("71_wv31v"), ExtResource("72_58ut1"), ExtResource("73_l4fl8"), ExtResource("74_k87w8"), ExtResource("75_apodo"), ExtResource("76_k21e5"), ExtResource("77_ex5wo"), ExtResource("78_hqm8f"), ExtResource("79_2bqqx")]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"stop_falling"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lyxr1"]
+_data = {
+"RESET": SubResource("Animation_1jmcl"),
+"attack": SubResource("Animation_x7e6o"),
+"falling": SubResource("Animation_7bcqt"),
+"idle": SubResource("Animation_25w3t"),
+"jump": SubResource("Animation_x1mi0"),
+"squat": SubResource("Animation_nm4nb"),
+"talk": SubResource("Animation_hrkbl"),
+"walk": SubResource("Animation_xdmq4")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jswc5"]
+size = Vector2(145.75, 422.25)
+
+[node name="Player" type="CharacterBody2D"]
+collision_mask = 16
+script = ExtResource("1_y82qu")
+speed = 450.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-70, -243)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_lyxr1")
+}
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -224)
+shape = SubResource("RectangleShape2D_jswc5")
