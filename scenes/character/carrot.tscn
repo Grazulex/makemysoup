@@ -1,5 +1,6 @@
-[gd_scene load_steps=21 format=3 uid="uid://btwur6x4iye1t"]
+[gd_scene load_steps=75 format=3 uid="uid://btwur6x4iye1t"]
 
+[ext_resource type="Script" path="res://scenes/character/carrot.gd" id="1_v56mp"]
 [ext_resource type="Texture2D" uid="uid://dikbuprxnwao7" path="res://assets/enemies/carrot/__carrot_enemy_type_idle_in_ground_look_around_000.png" id="1_vvq5r"]
 [ext_resource type="Texture2D" uid="uid://benfvtnf7x88a" path="res://assets/enemies/carrot/__carrot_enemy_type_idle_in_ground_look_around_001.png" id="2_icp5a"]
 [ext_resource type="Texture2D" uid="uid://c0yvgvjusojm2" path="res://assets/enemies/carrot/__carrot_enemy_type_idle_in_ground_look_around_002.png" id="3_k80p5"]
@@ -16,24 +17,55 @@
 [ext_resource type="Texture2D" uid="uid://cb3gimaoocw0p" path="res://assets/enemies/carrot/__carrot_enemy_type_idle_in_ground_look_around_013.png" id="14_p8os0"]
 [ext_resource type="Texture2D" uid="uid://uahl6wecsmlt" path="res://assets/enemies/carrot/__carrot_enemy_type_idle_in_ground_look_around_014.png" id="15_1h74l"]
 [ext_resource type="Texture2D" uid="uid://b5ndwjqobriik" path="res://assets/enemies/carrot/__carrot_enemy_type_idle_in_ground_look_around_015.png" id="16_u3kfe"]
-
-[sub_resource type="Animation" id="Animation_k3lul"]
-resource_name = "idle"
-length = 1.6
-loop_mode = 1
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [ExtResource("1_vvq5r"), ExtResource("2_icp5a"), ExtResource("3_k80p5"), ExtResource("4_ie1qo"), ExtResource("5_5po0s"), ExtResource("6_f8r1u"), ExtResource("7_h4u3c"), ExtResource("8_7byps"), ExtResource("9_lqatn"), ExtResource("10_rxlqt"), ExtResource("11_d2ppm"), ExtResource("12_0prw7"), ExtResource("13_hmefc"), ExtResource("14_p8os0"), ExtResource("15_1h74l"), ExtResource("16_u3kfe")]
-}
+[ext_resource type="Texture2D" uid="uid://dsoml4ol35acg" path="res://assets/enemies/carrot/__carrot_enemy_type_transition_out_of_ground_000.png" id="18_d5wi7"]
+[ext_resource type="Script" path="res://scripts/enemies/enemy_state_machine.gd" id="18_mdh7f"]
+[ext_resource type="Script" path="res://scripts/enemies/ground_state.gd" id="19_452hj"]
+[ext_resource type="Texture2D" uid="uid://f8orgy8a2rvt" path="res://assets/enemies/carrot/__carrot_enemy_type_transition_out_of_ground_001.png" id="19_solgg"]
+[ext_resource type="Texture2D" uid="uid://dkex30to6pmjp" path="res://assets/enemies/carrot/__carrot_enemy_type_transition_out_of_ground_002.png" id="20_5axbx"]
+[ext_resource type="Texture2D" uid="uid://cja1uldr5rsuk" path="res://assets/enemies/carrot/__carrot_enemy_type_transition_out_of_ground_003.png" id="21_485e8"]
+[ext_resource type="Texture2D" uid="uid://bfuaavddyakoy" path="res://assets/enemies/carrot/__carrot_enemy_type_transition_out_of_ground_004.png" id="22_cg4bo"]
+[ext_resource type="Texture2D" uid="uid://3jkyal8e0iv4" path="res://assets/enemies/carrot/__carrot_enemy_type_transition_out_of_ground_005.png" id="23_84khm"]
+[ext_resource type="Texture2D" uid="uid://c1cyn3fx8hqqb" path="res://assets/enemies/carrot/__carrot_enemy_type_transition_out_of_ground_006.png" id="24_j8te6"]
+[ext_resource type="Texture2D" uid="uid://bvwribskrqe17" path="res://assets/enemies/carrot/__carrot_enemy_type_transition_out_of_ground_007.png" id="25_5wu5m"]
+[ext_resource type="Texture2D" uid="uid://do1velcemtrq" path="res://assets/enemies/carrot/__carrot_enemy_type_transition_out_of_ground_008.png" id="26_4cxtx"]
+[ext_resource type="Texture2D" uid="uid://cabk4mnfvm0ui" path="res://assets/enemies/carrot/__carrot_enemy_type_transition_out_of_ground_009.png" id="27_w6y7r"]
+[ext_resource type="Texture2D" uid="uid://jht25otjb5k6" path="res://assets/enemies/carrot/__carrot_enemy_type_transition_out_of_ground_010.png" id="28_4iqt6"]
+[ext_resource type="Texture2D" uid="uid://bmq2lx1ewiwd2" path="res://assets/enemies/carrot/__carrot_enemy_type_transition_out_of_ground_011.png" id="29_6hhv3"]
+[ext_resource type="Texture2D" uid="uid://d0lid0ycvs7aw" path="res://assets/enemies/carrot/__carrot_enemy_type_idle_000.png" id="30_llnk8"]
+[ext_resource type="Texture2D" uid="uid://dqxsims8iya4o" path="res://assets/enemies/carrot/__carrot_enemy_type_idle_001.png" id="31_m6akx"]
+[ext_resource type="Texture2D" uid="uid://f1okao434som" path="res://assets/enemies/carrot/__carrot_enemy_type_idle_002.png" id="32_2lcl0"]
+[ext_resource type="Script" path="res://scripts/enemies/out_of_ground_state.gd" id="32_qw2rf"]
+[ext_resource type="Texture2D" uid="uid://02ascljycwkq" path="res://assets/enemies/carrot/__carrot_enemy_type_idle_003.png" id="33_d0g28"]
+[ext_resource type="Texture2D" uid="uid://bulvbihdavbdg" path="res://assets/enemies/carrot/__carrot_enemy_type_idle_004.png" id="34_bk0xf"]
+[ext_resource type="Texture2D" uid="uid://bllvwp6lba4y3" path="res://assets/enemies/carrot/__carrot_enemy_type_idle_005.png" id="35_sx7sn"]
+[ext_resource type="Texture2D" uid="uid://br0ytwbhwdu1i" path="res://assets/enemies/carrot/__carrot_enemy_type_idle_006.png" id="36_0i2cr"]
+[ext_resource type="Texture2D" uid="uid://c8ybx68epcx0h" path="res://assets/enemies/carrot/__carrot_enemy_type_idle_007.png" id="37_nothh"]
+[ext_resource type="Texture2D" uid="uid://bklfvvf52xfju" path="res://assets/enemies/carrot/__carrot_enemy_type_idle_008.png" id="38_4iilx"]
+[ext_resource type="Texture2D" uid="uid://cn4361c3m3ffr" path="res://assets/enemies/carrot/__carrot_enemy_type_idle_009.png" id="39_objbb"]
+[ext_resource type="Texture2D" uid="uid://2uexfsrlfsqt" path="res://assets/enemies/carrot/__carrot_enemy_type_idle_010.png" id="40_v86ol"]
+[ext_resource type="Texture2D" uid="uid://cmq417hyou710" path="res://assets/enemies/carrot/__carrot_enemy_type_idle_011.png" id="41_tcq3m"]
+[ext_resource type="Texture2D" uid="uid://ct604by0w4604" path="res://assets/enemies/carrot/__carrot_enemy_type_idle_012.png" id="42_mx78y"]
+[ext_resource type="Texture2D" uid="uid://crkskh62d5m0l" path="res://assets/enemies/carrot/__carrot_enemy_type_idle_013.png" id="43_gni3w"]
+[ext_resource type="Texture2D" uid="uid://d3ltj2eml2wo7" path="res://assets/enemies/carrot/__carrot_enemy_type_idle_014.png" id="44_j5cap"]
+[ext_resource type="Texture2D" uid="uid://crlewsdtb78xh" path="res://assets/enemies/carrot/__carrot_enemy_type_idle_015.png" id="45_inceu"]
+[ext_resource type="Texture2D" uid="uid://hne0m2oypj8w" path="res://assets/enemies/carrot/__carrot_enemy_type_idle_016.png" id="46_c3f7u"]
+[ext_resource type="Texture2D" uid="uid://k28u74jonmxq" path="res://assets/enemies/carrot/__carrot_enemy_type_idle_017.png" id="47_hgc4o"]
+[ext_resource type="Texture2D" uid="uid://cigbt0kxhqvrh" path="res://assets/enemies/carrot/__carrot_enemy_type_idle_018.png" id="48_h5log"]
+[ext_resource type="Texture2D" uid="uid://b2kgfpf41lteh" path="res://assets/enemies/carrot/__carrot_enemy_type_idle_019.png" id="49_2j3hd"]
+[ext_resource type="Texture2D" uid="uid://duj7mgfm6cujx" path="res://assets/enemies/carrot/__carrot_enemy_type_transition_into_ground_000.png" id="50_sgi0r"]
+[ext_resource type="Texture2D" uid="uid://djbl5xtdycmxo" path="res://assets/enemies/carrot/__carrot_enemy_type_transition_into_ground_001.png" id="51_exbpl"]
+[ext_resource type="Texture2D" uid="uid://1lprsdn08k5l" path="res://assets/enemies/carrot/__carrot_enemy_type_transition_into_ground_002.png" id="52_shs7t"]
+[ext_resource type="Script" path="res://scripts/enemies/idle_state.gd" id="53_8donx"]
+[ext_resource type="Texture2D" uid="uid://3f13d0q5i153" path="res://assets/enemies/carrot/__carrot_enemy_type_transition_into_ground_003.png" id="53_eghmj"]
+[ext_resource type="Texture2D" uid="uid://bkmdw4fuq57r6" path="res://assets/enemies/carrot/__carrot_enemy_type_transition_into_ground_004.png" id="54_f47pf"]
+[ext_resource type="Texture2D" uid="uid://d3mpq2bt67n8h" path="res://assets/enemies/carrot/__carrot_enemy_type_transition_into_ground_005.png" id="55_1vp7m"]
+[ext_resource type="Texture2D" uid="uid://c74jiv4a45ilg" path="res://assets/enemies/carrot/__carrot_enemy_type_transition_into_ground_006.png" id="56_gmit5"]
+[ext_resource type="Texture2D" uid="uid://rkkd8mfeqmsx" path="res://assets/enemies/carrot/__carrot_enemy_type_transition_into_ground_007.png" id="57_sj5qw"]
+[ext_resource type="Texture2D" uid="uid://wavsh16ojo0w" path="res://assets/enemies/carrot/__carrot_enemy_type_transition_into_ground_008.png" id="58_vglfj"]
+[ext_resource type="Texture2D" uid="uid://cclatv0woctn5" path="res://assets/enemies/carrot/__carrot_enemy_type_transition_into_ground_009.png" id="59_vt3so"]
+[ext_resource type="Texture2D" uid="uid://c2b0y6y2x5ek6" path="res://assets/enemies/carrot/__carrot_enemy_type_transition_into_ground_010.png" id="60_0yqy3"]
+[ext_resource type="Texture2D" uid="uid://f10qknwost0t" path="res://assets/enemies/carrot/__carrot_enemy_type_transition_into_ground_011.png" id="61_lysjk"]
+[ext_resource type="Script" path="res://scripts/enemies/go_to_ground_state.gd" id="66_hlnyh"]
 
 [sub_resource type="Animation" id="Animation_68i8e"]
 length = 0.001
@@ -50,18 +82,109 @@ tracks/0/keys = {
 "values": [null]
 }
 
+[sub_resource type="Animation" id="Animation_k3lul"]
+resource_name = "ground"
+length = 1.6
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [ExtResource("1_vvq5r"), ExtResource("2_icp5a"), ExtResource("3_k80p5"), ExtResource("4_ie1qo"), ExtResource("5_5po0s"), ExtResource("6_f8r1u"), ExtResource("7_h4u3c"), ExtResource("8_7byps"), ExtResource("9_lqatn"), ExtResource("10_rxlqt"), ExtResource("11_d2ppm"), ExtResource("12_0prw7"), ExtResource("13_hmefc"), ExtResource("14_p8os0"), ExtResource("15_1h74l"), ExtResource("16_u3kfe")]
+}
+
+[sub_resource type="Animation" id="Animation_3td6b"]
+resource_name = "out_of_ground"
+length = 1.2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [ExtResource("18_d5wi7"), ExtResource("19_solgg"), ExtResource("20_5axbx"), ExtResource("21_485e8"), ExtResource("22_cg4bo"), ExtResource("23_84khm"), ExtResource("24_j8te6"), ExtResource("25_5wu5m"), ExtResource("26_4cxtx"), ExtResource("27_w6y7r"), ExtResource("28_4iqt6"), ExtResource("29_6hhv3")]
+}
+
+[sub_resource type="Animation" id="Animation_wq6hg"]
+resource_name = "idle"
+length = 2.0
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [ExtResource("30_llnk8"), ExtResource("31_m6akx"), ExtResource("32_2lcl0"), ExtResource("33_d0g28"), ExtResource("34_bk0xf"), ExtResource("35_sx7sn"), ExtResource("36_0i2cr"), ExtResource("37_nothh"), ExtResource("38_4iilx"), ExtResource("39_objbb"), ExtResource("40_v86ol"), ExtResource("41_tcq3m"), ExtResource("42_mx78y"), ExtResource("43_gni3w"), ExtResource("44_j5cap"), ExtResource("45_inceu"), ExtResource("46_c3f7u"), ExtResource("47_hgc4o"), ExtResource("48_h5log"), ExtResource("49_2j3hd")]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../EnemyStateMachine/OutOfGround")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"on_exit"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_5acc4"]
+resource_name = "go_to_ground"
+length = 1.2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [ExtResource("50_sgi0r"), ExtResource("51_exbpl"), ExtResource("52_shs7t"), ExtResource("53_eghmj"), ExtResource("54_f47pf"), ExtResource("55_1vp7m"), ExtResource("56_gmit5"), ExtResource("57_sj5qw"), ExtResource("58_vglfj"), ExtResource("59_vt3so"), ExtResource("60_0yqy3"), ExtResource("61_lysjk")]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xm087"]
 _data = {
 "RESET": SubResource("Animation_68i8e"),
-"idle": SubResource("Animation_k3lul")
+"go_to_ground": SubResource("Animation_5acc4"),
+"ground": SubResource("Animation_k3lul"),
+"idle": SubResource("Animation_wq6hg"),
+"out_of_ground": SubResource("Animation_3td6b")
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rg6px"]
 radius = 76.7919
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qmnpp"]
+size = Vector2(1570.75, 182)
+
 [node name="Carrot" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 16
+script = ExtResource("1_v56mp")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-31, -285)
@@ -70,8 +193,41 @@ position = Vector2(-31, -285)
 libraries = {
 "": SubResource("AnimationLibrary_xm087")
 }
-autoplay = "idle"
+autoplay = "ground"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="Body" type="Area2D" parent="." groups=["enemy"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Body"]
 position = Vector2(-14, -47)
 shape = SubResource("CircleShape2D_rg6px")
+
+[node name="Attack" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Attack"]
+position = Vector2(0, -93)
+shape = SubResource("RectangleShape2D_qmnpp")
+debug_color = Color(0.125931, 0.646091, 0.0808442, 0.42)
+
+[node name="EnemyStateMachine" type="Node" parent="." node_paths=PackedStringArray("current_state", "enemy")]
+script = ExtResource("18_mdh7f")
+current_state = NodePath("Ground")
+enemy = NodePath("..")
+
+[node name="Ground" type="Node" parent="EnemyStateMachine"]
+script = ExtResource("19_452hj")
+
+[node name="OutOfGround" type="Node" parent="EnemyStateMachine"]
+script = ExtResource("32_qw2rf")
+
+[node name="Idle" type="Node" parent="EnemyStateMachine"]
+script = ExtResource("53_8donx")
+
+[node name="GoToGround" type="Node" parent="EnemyStateMachine"]
+script = ExtResource("66_hlnyh")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="animation_finished" from="Sprite2D/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="area_entered" from="Body" to="." method="_on_body_area_entered"]
+[connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

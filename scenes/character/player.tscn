@@ -1,4 +1,4 @@
-[gd_scene load_steps=97 format=3 uid="uid://cofm71akoe8is"]
+[gd_scene load_steps=98 format=3 uid="uid://cofm71akoe8is"]
 
 [ext_resource type="Texture2D" uid="uid://2o0h40y4qydu" path="res://assets/character/__pauper_girl_light_skin_tone_idle_side_000.png" id="1_51r6m"]
 [ext_resource type="Script" path="res://scenes/character/player.gd" id="1_y82qu"]
@@ -293,6 +293,9 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jswc5"]
 size = Vector2(145.75, 422.25)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uw0r2"]
+size = Vector2(116, 52)
+
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 16
 script = ExtResource("1_y82qu")
@@ -308,12 +311,16 @@ libraries = {
 }
 autoplay = "idle"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." groups=["player"]]
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, -224)
 shape = SubResource("RectangleShape2D_jswc5")
 
-[node name="PlayerStateMachine" type="Node" parent="." node_paths=PackedStringArray("player")]
+[node name="PlayerStateMachine" type="Node" parent="." node_paths=PackedStringArray("current_state", "player")]
 script = ExtResource("80_uebvf")
+current_state = NodePath("Idle")
 player = NodePath("..")
 
 [node name="Idle" type="Node" parent="PlayerStateMachine"]
@@ -324,6 +331,7 @@ script = ExtResource("82_sjutk")
 
 [node name="Jump" type="Node" parent="PlayerStateMachine"]
 script = ExtResource("83_1c1yl")
+can_move = false
 
 [node name="Squat" type="Node" parent="PlayerStateMachine"]
 script = ExtResource("84_2wm4j")
@@ -335,4 +343,8 @@ can_move = false
 
 [node name="Falling" type="Node" parent="PlayerStateMachine"]
 script = ExtResource("86_v5opo")
-can_move = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -39)
+shape = SubResource("RectangleShape2D_uw0r2")
+debug_color = Color(0.970136, 0.126886, 0.303562, 0.42)

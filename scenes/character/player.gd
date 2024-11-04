@@ -14,7 +14,7 @@ extends CharacterBody2D
 
 @export var speed : float = 650.0
 
-var is_idle : bool = false
+var is_idle : bool = true
 var is_walking : bool = false
 var is_jumping : bool = false
 var is_squat : bool = false
@@ -37,6 +37,7 @@ func _physics_process(delta: float) -> void:
 	var direction := Input.get_axis("left", "right")
 
 	if !is_jumping && !is_squat && !is_attack:
+	#if state_machine.current_state.can_move:
 		if direction:
 			walk.set_direction(direction)
 			state_machine.switch_state(walk)
