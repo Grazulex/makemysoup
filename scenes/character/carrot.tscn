@@ -82,6 +82,23 @@ tracks/0/keys = {
 "values": [null]
 }
 
+[sub_resource type="Animation" id="Animation_5acc4"]
+resource_name = "go_to_ground"
+length = 1.2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [ExtResource("50_sgi0r"), ExtResource("51_exbpl"), ExtResource("52_shs7t"), ExtResource("53_eghmj"), ExtResource("54_f47pf"), ExtResource("55_1vp7m"), ExtResource("56_gmit5"), ExtResource("57_sj5qw"), ExtResource("58_vglfj"), ExtResource("59_vt3so"), ExtResource("60_0yqy3"), ExtResource("61_lysjk")]
+}
+
 [sub_resource type="Animation" id="Animation_k3lul"]
 resource_name = "ground"
 length = 1.6
@@ -98,23 +115,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [ExtResource("1_vvq5r"), ExtResource("2_icp5a"), ExtResource("3_k80p5"), ExtResource("4_ie1qo"), ExtResource("5_5po0s"), ExtResource("6_f8r1u"), ExtResource("7_h4u3c"), ExtResource("8_7byps"), ExtResource("9_lqatn"), ExtResource("10_rxlqt"), ExtResource("11_d2ppm"), ExtResource("12_0prw7"), ExtResource("13_hmefc"), ExtResource("14_p8os0"), ExtResource("15_1h74l"), ExtResource("16_u3kfe")]
-}
-
-[sub_resource type="Animation" id="Animation_3td6b"]
-resource_name = "out_of_ground"
-length = 1.2
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [ExtResource("18_d5wi7"), ExtResource("19_solgg"), ExtResource("20_5axbx"), ExtResource("21_485e8"), ExtResource("22_cg4bo"), ExtResource("23_84khm"), ExtResource("24_j8te6"), ExtResource("25_5wu5m"), ExtResource("26_4cxtx"), ExtResource("27_w6y7r"), ExtResource("28_4iqt6"), ExtResource("29_6hhv3")]
 }
 
 [sub_resource type="Animation" id="Animation_wq6hg"]
@@ -149,8 +149,8 @@ tracks/1/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_5acc4"]
-resource_name = "go_to_ground"
+[sub_resource type="Animation" id="Animation_3td6b"]
+resource_name = "out_of_ground"
 length = 1.2
 step = 0.1
 tracks/0/type = "value"
@@ -163,7 +163,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [ExtResource("50_sgi0r"), ExtResource("51_exbpl"), ExtResource("52_shs7t"), ExtResource("53_eghmj"), ExtResource("54_f47pf"), ExtResource("55_1vp7m"), ExtResource("56_gmit5"), ExtResource("57_sj5qw"), ExtResource("58_vglfj"), ExtResource("59_vt3so"), ExtResource("60_0yqy3"), ExtResource("61_lysjk")]
+"values": [ExtResource("18_d5wi7"), ExtResource("19_solgg"), ExtResource("20_5axbx"), ExtResource("21_485e8"), ExtResource("22_cg4bo"), ExtResource("23_84khm"), ExtResource("24_j8te6"), ExtResource("25_5wu5m"), ExtResource("26_4cxtx"), ExtResource("27_w6y7r"), ExtResource("28_4iqt6"), ExtResource("29_6hhv3")]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xm087"]
@@ -213,17 +213,21 @@ script = ExtResource("18_mdh7f")
 current_state = NodePath("Ground")
 enemy = NodePath("..")
 
-[node name="Ground" type="Node" parent="EnemyStateMachine"]
+[node name="Ground" type="Node" parent="EnemyStateMachine" node_paths=PackedStringArray("_next_state")]
 script = ExtResource("19_452hj")
+_next_state = NodePath("../OutOfGround")
 
-[node name="OutOfGround" type="Node" parent="EnemyStateMachine"]
+[node name="OutOfGround" type="Node" parent="EnemyStateMachine" node_paths=PackedStringArray("_next_state")]
 script = ExtResource("32_qw2rf")
+_next_state = NodePath("../Idle")
 
-[node name="Idle" type="Node" parent="EnemyStateMachine"]
+[node name="Idle" type="Node" parent="EnemyStateMachine" node_paths=PackedStringArray("_next_state")]
 script = ExtResource("53_8donx")
+_next_state = NodePath("../GoToGround")
 
-[node name="GoToGround" type="Node" parent="EnemyStateMachine"]
+[node name="GoToGround" type="Node" parent="EnemyStateMachine" node_paths=PackedStringArray("_next_state")]
 script = ExtResource("66_hlnyh")
+_next_state = NodePath("../Ground")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 

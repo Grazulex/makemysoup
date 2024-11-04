@@ -15,12 +15,14 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	pass
-
+	if current_state.next_state != null:
+		if (current_state.next_state != current_state):
+			switch_state(current_state.next_state)
+			current_state.next_state = null
+		
 func switch_state(new_state : StateEnemy) -> void:
 	if (current_state != new_state):
 		if(current_state != null):
 			current_state.on_exit()
 		current_state = new_state
-		print(new_state.name)
 		current_state.on_enter()
