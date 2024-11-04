@@ -1,4 +1,4 @@
-[gd_scene load_steps=90 format=3 uid="uid://cofm71akoe8is"]
+[gd_scene load_steps=97 format=3 uid="uid://cofm71akoe8is"]
 
 [ext_resource type="Texture2D" uid="uid://2o0h40y4qydu" path="res://assets/character/__pauper_girl_light_skin_tone_idle_side_000.png" id="1_51r6m"]
 [ext_resource type="Script" path="res://scenes/character/player.gd" id="1_y82qu"]
@@ -79,6 +79,13 @@
 [ext_resource type="Texture2D" uid="uid://dfvqiy2v8rbhb" path="res://assets/character/__pauper_girl_light_skin_tone_falling_007.png" id="77_ex5wo"]
 [ext_resource type="Texture2D" uid="uid://qc21a688bcxw" path="res://assets/character/__pauper_girl_light_skin_tone_falling_008.png" id="78_hqm8f"]
 [ext_resource type="Texture2D" uid="uid://dq1vka216q217" path="res://assets/character/__pauper_girl_light_skin_tone_falling_009.png" id="79_2bqqx"]
+[ext_resource type="Script" path="res://scripts/player/player_state_machine.gd" id="80_uebvf"]
+[ext_resource type="Script" path="res://scripts/player/idle_state.gd" id="81_3yex5"]
+[ext_resource type="Script" path="res://scripts/player/walk_state.gd" id="82_sjutk"]
+[ext_resource type="Script" path="res://scripts/player/jump_state.gd" id="83_1c1yl"]
+[ext_resource type="Script" path="res://scripts/player/squat_state.gd" id="84_2wm4j"]
+[ext_resource type="Script" path="res://scripts/player/attack_state.gd" id="85_wn202"]
+[ext_resource type="Script" path="res://scripts/player/falling_state.gd" id="86_v5opo"]
 
 [sub_resource type="Animation" id="Animation_1jmcl"]
 length = 0.001
@@ -114,7 +121,7 @@ tracks/0/keys = {
 tracks/1/type = "method"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath(".")
+tracks/1/path = NodePath("PlayerStateMachine/Attack")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -122,7 +129,38 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
-"method": &"stop_attacking"
+"method": &"on_exit"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_7bcqt"]
+resource_name = "falling"
+length = 2.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [ExtResource("70_21e0o"), ExtResource("71_wv31v"), ExtResource("72_58ut1"), ExtResource("73_l4fl8"), ExtResource("74_k87w8"), ExtResource("75_apodo"), ExtResource("76_k21e5"), ExtResource("77_ex5wo"), ExtResource("78_hqm8f"), ExtResource("79_2bqqx")]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerStateMachine/Falling")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"on_exit"
 }]
 }
 
@@ -163,7 +201,7 @@ tracks/0/keys = {
 tracks/1/type = "method"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath(".")
+tracks/1/path = NodePath("PlayerStateMachine/Jump")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -171,7 +209,7 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
-"method": &"stop_jumping"
+"method": &"on_exit"
 }]
 }
 
@@ -193,7 +231,7 @@ tracks/0/keys = {
 tracks/1/type = "method"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath(".")
+tracks/1/path = NodePath("PlayerStateMachine/Squat")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -201,7 +239,7 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
-"method": &"stop_squating"
+"method": &"on_exit"
 }]
 }
 
@@ -240,37 +278,6 @@ tracks/0/keys = {
 "values": [ExtResource("21_6kmak"), ExtResource("22_cixy8"), ExtResource("23_ro1is"), ExtResource("24_gxm15"), ExtResource("25_deo5t"), ExtResource("26_im4yq"), ExtResource("27_otaf5"), ExtResource("28_uf1e6")]
 }
 
-[sub_resource type="Animation" id="Animation_7bcqt"]
-resource_name = "falling"
-length = 2.0
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [ExtResource("70_21e0o"), ExtResource("71_wv31v"), ExtResource("72_58ut1"), ExtResource("73_l4fl8"), ExtResource("74_k87w8"), ExtResource("75_apodo"), ExtResource("76_k21e5"), ExtResource("77_ex5wo"), ExtResource("78_hqm8f"), ExtResource("79_2bqqx")]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(2),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"stop_falling"
-}]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lyxr1"]
 _data = {
 "RESET": SubResource("Animation_1jmcl"),
@@ -304,3 +311,28 @@ autoplay = "idle"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -224)
 shape = SubResource("RectangleShape2D_jswc5")
+
+[node name="PlayerStateMachine" type="Node" parent="." node_paths=PackedStringArray("player")]
+script = ExtResource("80_uebvf")
+player = NodePath("..")
+
+[node name="Idle" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("81_3yex5")
+
+[node name="Walk" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("82_sjutk")
+
+[node name="Jump" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("83_1c1yl")
+
+[node name="Squat" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("84_2wm4j")
+can_move = false
+
+[node name="Attack" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("85_wn202")
+can_move = false
+
+[node name="Falling" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("86_v5opo")
+can_move = false

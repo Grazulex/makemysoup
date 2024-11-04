@@ -16,7 +16,6 @@ z_index = 2
 y_sort_enabled = true
 collision_mask = 18
 speed = 350.0
-jum_velocity = -500.0
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(0.5, 0.5)
