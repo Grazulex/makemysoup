@@ -1,4 +1,4 @@
-[gd_scene load_steps=75 format=3 uid="uid://btwur6x4iye1t"]
+[gd_scene load_steps=98 format=3 uid="uid://btwur6x4iye1t"]
 
 [ext_resource type="Script" path="res://scenes/character/carrot.gd" id="1_v56mp"]
 [ext_resource type="Texture2D" uid="uid://dikbuprxnwao7" path="res://assets/enemies/carrot/__carrot_enemy_type_idle_in_ground_look_around_000.png" id="1_vvq5r"]
@@ -65,7 +65,28 @@
 [ext_resource type="Texture2D" uid="uid://cclatv0woctn5" path="res://assets/enemies/carrot/__carrot_enemy_type_transition_into_ground_009.png" id="59_vt3so"]
 [ext_resource type="Texture2D" uid="uid://c2b0y6y2x5ek6" path="res://assets/enemies/carrot/__carrot_enemy_type_transition_into_ground_010.png" id="60_0yqy3"]
 [ext_resource type="Texture2D" uid="uid://f10qknwost0t" path="res://assets/enemies/carrot/__carrot_enemy_type_transition_into_ground_011.png" id="61_lysjk"]
+[ext_resource type="Texture2D" uid="uid://d0g1ief2r4f4h" path="res://assets/enemies/carrot/__carrot_enemy_type_torpedo_transition_to_000.png" id="62_mv2cb"]
+[ext_resource type="Texture2D" uid="uid://5yii6tberijg" path="res://assets/enemies/carrot/__carrot_enemy_type_torpedo_transition_to_001.png" id="63_u3k1w"]
+[ext_resource type="Texture2D" uid="uid://vcjj5cuqteqy" path="res://assets/enemies/carrot/__carrot_enemy_type_torpedo_transition_to_002.png" id="64_mu8ed"]
+[ext_resource type="Texture2D" uid="uid://cv7wlr0cq5rfr" path="res://assets/enemies/carrot/__carrot_enemy_type_torpedo_transition_to_003.png" id="65_ltk2l"]
 [ext_resource type="Script" path="res://scripts/enemies/go_to_ground_state.gd" id="66_hlnyh"]
+[ext_resource type="Texture2D" uid="uid://cejrc0dqfi56f" path="res://assets/enemies/carrot/__carrot_enemy_type_torpedo_transition_to_004.png" id="66_jesw4"]
+[ext_resource type="Texture2D" uid="uid://cx7mvx2uaj174" path="res://assets/enemies/carrot/__carrot_enemy_type_torpedo_transition_to_005.png" id="67_p8oia"]
+[ext_resource type="Texture2D" uid="uid://jdf07actv5lm" path="res://assets/enemies/carrot/__carrot_enemy_type_torpedo_transition_to_006.png" id="68_fvx8w"]
+[ext_resource type="Texture2D" uid="uid://bx4gtmbuwdywt" path="res://assets/enemies/carrot/__carrot_enemy_type_torpedo_000.png" id="69_it6rh"]
+[ext_resource type="Texture2D" uid="uid://bd3xdjy71jypg" path="res://assets/enemies/carrot/__carrot_enemy_type_torpedo_001.png" id="70_3dyjl"]
+[ext_resource type="Texture2D" uid="uid://5b7cytpipcea" path="res://assets/enemies/carrot/__carrot_enemy_type_torpedo_002.png" id="71_4wvyl"]
+[ext_resource type="Texture2D" uid="uid://46w0h1dtjckp" path="res://assets/enemies/carrot/__carrot_enemy_type_torpedo_003.png" id="72_jo0wf"]
+[ext_resource type="Texture2D" uid="uid://ly8s761va5pe" path="res://assets/enemies/carrot/__carrot_enemy_type_torpedo_transition_from_000.png" id="73_exaam"]
+[ext_resource type="Texture2D" uid="uid://q455a4u54xcc" path="res://assets/enemies/carrot/__carrot_enemy_type_torpedo_transition_from_001.png" id="74_3otj8"]
+[ext_resource type="Texture2D" uid="uid://4x5cex2op6s7" path="res://assets/enemies/carrot/__carrot_enemy_type_torpedo_transition_from_002.png" id="75_sqctf"]
+[ext_resource type="Texture2D" uid="uid://efvp0b1np8w2" path="res://assets/enemies/carrot/__carrot_enemy_type_torpedo_transition_from_003.png" id="76_lqage"]
+[ext_resource type="Texture2D" uid="uid://ciuw34h7jmm3o" path="res://assets/enemies/carrot/__carrot_enemy_type_torpedo_transition_from_004.png" id="77_eg5y6"]
+[ext_resource type="Texture2D" uid="uid://do2bui2lbs3x6" path="res://assets/enemies/carrot/__carrot_enemy_type_torpedo_transition_from_005.png" id="78_h3b2d"]
+[ext_resource type="Texture2D" uid="uid://c01iyedjpsp6t" path="res://assets/enemies/carrot/__carrot_enemy_type_torpedo_transition_from_006.png" id="79_yx0hu"]
+[ext_resource type="Script" path="res://scripts/enemies/attack_state.gd" id="85_w0fma"]
+[ext_resource type="Script" path="res://scripts/enemies/torpedo_state.gd" id="86_23ahw"]
+[ext_resource type="Script" path="res://scripts/enemies/land_state.gd" id="87_p1b01"]
 
 [sub_resource type="Animation" id="Animation_68i8e"]
 length = 0.001
@@ -80,6 +101,22 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [null]
+}
+
+[sub_resource type="Animation" id="Animation_ypypw"]
+resource_name = "from_torpedo"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("73_exaam"), ExtResource("74_3otj8"), ExtResource("75_sqctf"), ExtResource("76_lqage"), ExtResource("77_eg5y6"), ExtResource("78_h3b2d"), ExtResource("79_yx0hu")]
 }
 
 [sub_resource type="Animation" id="Animation_5acc4"]
@@ -166,20 +203,55 @@ tracks/0/keys = {
 "values": [ExtResource("18_d5wi7"), ExtResource("19_solgg"), ExtResource("20_5axbx"), ExtResource("21_485e8"), ExtResource("22_cg4bo"), ExtResource("23_84khm"), ExtResource("24_j8te6"), ExtResource("25_5wu5m"), ExtResource("26_4cxtx"), ExtResource("27_w6y7r"), ExtResource("28_4iqt6"), ExtResource("29_6hhv3")]
 }
 
+[sub_resource type="Animation" id="Animation_cndnw"]
+resource_name = "to_torpedo"
+length = 0.7
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [ExtResource("62_mv2cb"), ExtResource("63_u3k1w"), ExtResource("64_mu8ed"), ExtResource("65_ltk2l"), ExtResource("66_jesw4"), ExtResource("67_p8oia"), ExtResource("68_fvx8w")]
+}
+
+[sub_resource type="Animation" id="Animation_7n4lp"]
+resource_name = "torpedo"
+length = 0.4
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [ExtResource("69_it6rh"), ExtResource("70_3dyjl"), ExtResource("71_4wvyl"), ExtResource("72_jo0wf")]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xm087"]
 _data = {
 "RESET": SubResource("Animation_68i8e"),
+"from_torpedo": SubResource("Animation_ypypw"),
 "go_to_ground": SubResource("Animation_5acc4"),
 "ground": SubResource("Animation_k3lul"),
 "idle": SubResource("Animation_wq6hg"),
-"out_of_ground": SubResource("Animation_3td6b")
+"out_of_ground": SubResource("Animation_3td6b"),
+"to_torpedo": SubResource("Animation_cndnw"),
+"torpedo": SubResource("Animation_7n4lp")
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rg6px"]
 radius = 76.7919
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qmnpp"]
-size = Vector2(1570.75, 182)
 
 [node name="Carrot" type="CharacterBody2D"]
 collision_layer = 2
@@ -201,37 +273,48 @@ autoplay = "ground"
 position = Vector2(-14, -47)
 shape = SubResource("CircleShape2D_rg6px")
 
-[node name="Attack" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Attack"]
-position = Vector2(0, -93)
-shape = SubResource("RectangleShape2D_qmnpp")
-debug_color = Color(0.125931, 0.646091, 0.0808442, 0.42)
-
-[node name="EnemyStateMachine" type="Node" parent="." node_paths=PackedStringArray("current_state", "enemy")]
+[node name="EnemyStateMachine" type="Node" parent="." node_paths=PackedStringArray("current_state", "start_state", "enemy")]
 script = ExtResource("18_mdh7f")
 current_state = NodePath("Ground")
+start_state = NodePath("Ground")
 enemy = NodePath("..")
 
-[node name="Ground" type="Node" parent="EnemyStateMachine" node_paths=PackedStringArray("_next_state")]
+[node name="Ground" type="Node" parent="EnemyStateMachine"]
 script = ExtResource("19_452hj")
-_next_state = NodePath("../OutOfGround")
 
-[node name="OutOfGround" type="Node" parent="EnemyStateMachine" node_paths=PackedStringArray("_next_state")]
+[node name="OutOfGround" type="Node" parent="EnemyStateMachine"]
 script = ExtResource("32_qw2rf")
-_next_state = NodePath("../Idle")
 
-[node name="Idle" type="Node" parent="EnemyStateMachine" node_paths=PackedStringArray("_next_state")]
+[node name="Idle" type="Node" parent="EnemyStateMachine"]
 script = ExtResource("53_8donx")
-_next_state = NodePath("../GoToGround")
 
-[node name="GoToGround" type="Node" parent="EnemyStateMachine" node_paths=PackedStringArray("_next_state")]
+[node name="GoToGround" type="Node" parent="EnemyStateMachine"]
 script = ExtResource("66_hlnyh")
-_next_state = NodePath("../Ground")
+
+[node name="Attack" type="Node" parent="EnemyStateMachine"]
+script = ExtResource("85_w0fma")
+
+[node name="Torpedo" type="Node" parent="EnemyStateMachine"]
+script = ExtResource("86_23ahw")
+
+[node name="Land" type="Node" parent="EnemyStateMachine"]
+script = ExtResource("87_p1b01")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="LabelStateDebug" type="Label" parent="."]
+offset_left = -129.0
+offset_top = -485.0
+offset_right = -76.0
+offset_bottom = -462.0
+theme_override_font_sizes/font_size = 35
+text = "State : "
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
 
 [connection signal="animation_finished" from="Sprite2D/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="area_entered" from="Body" to="." method="_on_body_area_entered"]
 [connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

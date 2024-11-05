@@ -21,6 +21,8 @@ var is_squat : bool = false
 var is_attack : bool = false
 var is_falling : bool = false
 
+var direction : float
+
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -34,7 +36,7 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("attack") and is_on_floor():
 		state_machine.switch_state(attack)	
 
-	var direction := Input.get_axis("left", "right")
+	direction = Input.get_axis("left", "right")
 
 	if !is_jumping && !is_squat && !is_attack:
 	#if state_machine.current_state.can_move:

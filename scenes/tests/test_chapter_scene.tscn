@@ -18,9 +18,10 @@ position = Vector2(-1340, -4)
 speed = 350.0
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-zoom = Vector2(0.5, 0.5)
+zoom = Vector2(0.3, 0.3)
 
-[node name="Carrot" parent="." instance=ExtResource("3_nl2fm")]
+[node name="Carrot" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_nl2fm")]
 z_index = 1
 y_sort_enabled = true
 position = Vector2(1422, 14)
+player = NodePath("../Player")
