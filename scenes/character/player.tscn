@@ -1,4 +1,4 @@
-[gd_scene load_steps=98 format=3 uid="uid://cofm71akoe8is"]
+[gd_scene load_steps=116 format=3 uid="uid://cofm71akoe8is"]
 
 [ext_resource type="Texture2D" uid="uid://2o0h40y4qydu" path="res://assets/character/__pauper_girl_light_skin_tone_idle_side_000.png" id="1_51r6m"]
 [ext_resource type="Script" path="res://scenes/character/player.gd" id="1_y82qu"]
@@ -79,13 +79,30 @@
 [ext_resource type="Texture2D" uid="uid://dfvqiy2v8rbhb" path="res://assets/character/__pauper_girl_light_skin_tone_falling_007.png" id="77_ex5wo"]
 [ext_resource type="Texture2D" uid="uid://qc21a688bcxw" path="res://assets/character/__pauper_girl_light_skin_tone_falling_008.png" id="78_hqm8f"]
 [ext_resource type="Texture2D" uid="uid://dq1vka216q217" path="res://assets/character/__pauper_girl_light_skin_tone_falling_009.png" id="79_2bqqx"]
+[ext_resource type="Texture2D" uid="uid://crctlocv732f1" path="res://assets/character/__pauper_girl_light_skin_tone_whacked_000.png" id="80_1imxt"]
 [ext_resource type="Script" path="res://scripts/player/player_state_machine.gd" id="80_uebvf"]
 [ext_resource type="Script" path="res://scripts/player/idle_state.gd" id="81_3yex5"]
+[ext_resource type="Texture2D" uid="uid://bpmfx81c8lwyo" path="res://assets/character/__pauper_girl_light_skin_tone_whacked_001.png" id="81_g72vd"]
 [ext_resource type="Script" path="res://scripts/player/walk_state.gd" id="82_sjutk"]
+[ext_resource type="Texture2D" uid="uid://drct7u03rvtpq" path="res://assets/character/__pauper_girl_light_skin_tone_whacked_002.png" id="82_x45eb"]
 [ext_resource type="Script" path="res://scripts/player/jump_state.gd" id="83_1c1yl"]
+[ext_resource type="Texture2D" uid="uid://06w2fv4w7sr1" path="res://assets/character/__pauper_girl_light_skin_tone_whacked_003.png" id="83_gvj21"]
 [ext_resource type="Script" path="res://scripts/player/squat_state.gd" id="84_2wm4j"]
+[ext_resource type="Texture2D" uid="uid://cem36jh38p1r" path="res://assets/character/__pauper_girl_light_skin_tone_whacked_004.png" id="84_p0jxx"]
 [ext_resource type="Script" path="res://scripts/player/attack_state.gd" id="85_wn202"]
+[ext_resource type="Texture2D" uid="uid://c4qc81iafgdne" path="res://assets/character/__pauper_girl_light_skin_tone_whacked_005.png" id="85_yux0e"]
+[ext_resource type="Texture2D" uid="uid://bqhqn14dpvbpd" path="res://assets/character/__pauper_girl_light_skin_tone_whacked_006.png" id="86_8ps5s"]
 [ext_resource type="Script" path="res://scripts/player/falling_state.gd" id="86_v5opo"]
+[ext_resource type="Texture2D" uid="uid://1v0yujabneem" path="res://assets/character/__pauper_girl_light_skin_tone_whacked_007.png" id="87_6hm8i"]
+[ext_resource type="Texture2D" uid="uid://bw2ii1ri8kb2q" path="res://assets/character/__pauper_girl_light_skin_tone_whacked_008.png" id="88_k5dyq"]
+[ext_resource type="Texture2D" uid="uid://dfbu1bb5t06wn" path="res://assets/character/__pauper_girl_light_skin_tone_whacked_009.png" id="89_375og"]
+[ext_resource type="Texture2D" uid="uid://dkymhjy1irhpe" path="res://assets/character/__pauper_girl_light_skin_tone_whacked_010.png" id="90_anwtg"]
+[ext_resource type="Texture2D" uid="uid://cxkbnjyrttlc0" path="res://assets/character/__pauper_girl_light_skin_tone_whacked_011.png" id="91_w82ex"]
+[ext_resource type="Texture2D" uid="uid://b2fn7rh2jik22" path="res://assets/character/__pauper_girl_light_skin_tone_whacked_012.png" id="92_ny4u8"]
+[ext_resource type="Texture2D" uid="uid://bsgfrn07larko" path="res://assets/character/__pauper_girl_light_skin_tone_whacked_013.png" id="93_nj22x"]
+[ext_resource type="Texture2D" uid="uid://0tf7br5lrgti" path="res://assets/character/__pauper_girl_light_skin_tone_whacked_014.png" id="94_tlywg"]
+[ext_resource type="Texture2D" uid="uid://cp7bwh5qo7yf6" path="res://assets/character/__pauper_girl_light_skin_tone_whacked_015.png" id="95_kpkxk"]
+[ext_resource type="Script" path="res://scripts/player/damaged_state.gd" id="103_bi75h"]
 
 [sub_resource type="Animation" id="Animation_1jmcl"]
 length = 0.001
@@ -278,10 +295,28 @@ tracks/0/keys = {
 "values": [ExtResource("21_6kmak"), ExtResource("22_cixy8"), ExtResource("23_ro1is"), ExtResource("24_gxm15"), ExtResource("25_deo5t"), ExtResource("26_im4yq"), ExtResource("27_otaf5"), ExtResource("28_uf1e6")]
 }
 
+[sub_resource type="Animation" id="Animation_rmij5"]
+resource_name = "damaged"
+length = 1.6
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [ExtResource("80_1imxt"), ExtResource("81_g72vd"), ExtResource("82_x45eb"), ExtResource("83_gvj21"), ExtResource("84_p0jxx"), ExtResource("85_yux0e"), ExtResource("86_8ps5s"), ExtResource("87_6hm8i"), ExtResource("88_k5dyq"), ExtResource("89_375og"), ExtResource("90_anwtg"), ExtResource("91_w82ex"), ExtResource("92_ny4u8"), ExtResource("93_nj22x"), ExtResource("94_tlywg"), ExtResource("95_kpkxk")]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lyxr1"]
 _data = {
 "RESET": SubResource("Animation_1jmcl"),
 "attack": SubResource("Animation_x7e6o"),
+"damaged": SubResource("Animation_rmij5"),
 "falling": SubResource("Animation_7bcqt"),
 "idle": SubResource("Animation_25w3t"),
 "jump": SubResource("Animation_x1mi0"),
@@ -312,7 +347,7 @@ libraries = {
 autoplay = "idle"
 
 [node name="Area2D" type="Area2D" parent="." groups=["player"]]
-collision_mask = 16
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, -224)
@@ -343,6 +378,9 @@ script = ExtResource("85_wn202")
 [node name="Falling" type="Node" parent="PlayerStateMachine"]
 script = ExtResource("86_v5opo")
 
+[node name="Damaged" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("103_bi75h")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -39)
 shape = SubResource("RectangleShape2D_uw0r2")
@@ -353,4 +391,7 @@ offset_left = -73.0
 offset_top = -528.0
 offset_right = 86.0
 offset_bottom = -505.0
+theme_override_font_sizes/font_size = 35
 text = "State : "
+
+[connection signal="animation_finished" from="Sprite2D/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

@@ -1,7 +1,10 @@
 extends CharacterBody2D
 
-@onready var sprite_2d: Sprite2D = $Sprite2D
+signal damage(damage : int)
+
+@onready var sprite: Sprite2D = $Sprite2D
 @onready var animation_player: AnimationPlayer = $Sprite2D/AnimationPlayer
+@onready var area: Area2D = $Area2D
 
 @onready var state_machine: PlayerStateMachine = $PlayerStateMachine
 
@@ -11,8 +14,10 @@ extends CharacterBody2D
 @onready var squat: SquatState = $PlayerStateMachine/Squat
 @onready var attack: AttackState = $PlayerStateMachine/Attack
 @onready var falling: FallingState = $PlayerStateMachine/Falling
+@onready var damaged: DamagedState = $PlayerStateMachine/Damaged
 
 @export var speed : float = 650.0
+@export var healt : int = 1000
 
 var is_idle : bool = true
 var is_walking : bool = false
@@ -20,9 +25,22 @@ var is_jumping : bool = false
 var is_squat : bool = false
 var is_attack : bool = false
 var is_falling : bool = false
+var is_damaged : bool = false
 
 var direction : float
 
+func _ready() -> void:
+	damage.connect(on_damage)
+
+func on_damage(damage: int) -> void:
+	healt -= damage
+	print("aie " + str(damage) + ". healt in now "+str(healt))
+	state_machine.switch_state(damaged)
+	
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "damaged":
+		state_machine.switch_state(idle)
+	
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -34,11 +52,15 @@ func _physics_process(delta: float) -> void:
 		state_machine.switch_state(squat)
 		
 	if Input.is_action_just_pressed("attack") and is_on_floor():
-		state_machine.switch_state(attack)	
+		state_machine.switch_state(attack)
+		var detect_areas = area.get_overlapping_areas()
+		for detect_area in detect_areas:
+			if detect_area.is_in_group("enemy"):
+				print("kill enemy")
 
 	direction = Input.get_axis("left", "right")
 
-	if !is_jumping && !is_squat && !is_attack:
+	if !is_jumping && !is_squat && !is_attack && !is_damaged:
 	#if state_machine.current_state.can_move:
 		if direction:
 			walk.set_direction(direction)
@@ -50,11 +72,11 @@ func _physics_process(delta: float) -> void:
 				state_machine.switch_state(falling)
 			
 		if direction < 0:
-			sprite_2d.flip_h = true
-			sprite_2d.offset.x = 150
+			sprite.flip_h = true
+			sprite.offset.x = 150
 		elif direction > 0:
-			sprite_2d.flip_h = false
-			sprite_2d.offset.x = 0
+			sprite.flip_h = false
+			sprite.offset.x = 0
 
 
 	move_and_slide()

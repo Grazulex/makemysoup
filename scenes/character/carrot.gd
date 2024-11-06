@@ -23,32 +23,20 @@ var is_torpedo : bool = false
 var is_landing : bool = false
 
 var rng = RandomNumberGenerator.new()
-var speed : float = 600.0
-var target_position : Vector2 = Vector2.ZERO
-var original_position : Vector2 = Vector2.ZERO
 
 func _ready() -> void:
 	state_machine.switch_state(ground)
-	original_position = position
 	
-func _process(_delta: float) -> void:
-	if is_torpedo:
-		velocity = position.direction_to(target_position) * speed
-		move_and_slide()
+func _process(delta: float) -> void:
+	state_machine.current_state.process(delta, player)
 	if !is_torpedo:
 		if player.global_position < global_position:
 			sprite_2d.flip_h = false
 		else:
 			sprite_2d.flip_h = true
-	if is_attack:
-		if player.global_position < global_position:
-			target_position = Vector2(player.position.x - 500, original_position.y + rng.randf_range(-600, 200))
-		else :
-			target_position = Vector2(player.position.x + 500, original_position.y + rng.randf_range(-600, 200))
 	
 func _on_body_area_entered(area: Area2D) -> void:
-	if area.is_in_group("player"):
-		print("collision player")
+	state_machine.current_state.on_body_area_entered(area)
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	state_machine.current_state.on_animation_finised(anim_name)

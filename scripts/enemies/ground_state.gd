@@ -10,6 +10,7 @@ func on_enter() -> void:
 	
 func on_exit() -> void:
 	enemy.is_ground = false
+	Global.original_position = enemy.position
 
 func on_visible_on_screen() -> void:
 	next_state = out_of_ground
