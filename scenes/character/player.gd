@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-signal damage(damage : int)
+signal attacked(damage : int)
 
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var animation_player: AnimationPlayer = $Sprite2D/AnimationPlayer
@@ -18,6 +18,7 @@ signal damage(damage : int)
 
 @export var speed : float = 650.0
 @export var healt : int = 1000
+@export var damage : int = 100
 
 var is_idle : bool = true
 var is_walking : bool = false
@@ -30,11 +31,11 @@ var is_damaged : bool = false
 var direction : float
 
 func _ready() -> void:
-	damage.connect(on_damage)
+	attacked.connect(on_attacked)
 
-func on_damage(damage: int) -> void:
-	healt -= damage
-	print("aie " + str(damage) + ". healt in now "+str(healt))
+func on_attacked(hit_damage: int) -> void:
+	healt -= hit_damage
+	print("player say : aie " + str(hit_damage) + ". healt in now "+str(healt))
 	state_machine.switch_state(damaged)
 	
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
@@ -56,7 +57,8 @@ func _physics_process(delta: float) -> void:
 		var detect_areas = area.get_overlapping_areas()
 		for detect_area in detect_areas:
 			if detect_area.is_in_group("enemy"):
-				print("kill enemy")
+				var enemy = detect_area.get_parent()
+				enemy.attacked.emit(damage)
 
 	direction = Input.get_axis("left", "right")
 

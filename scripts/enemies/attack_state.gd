@@ -8,7 +8,7 @@ func on_enter() -> void:
 	enemy.velocity.x = 0.0
 	enemy.animation_player.play("to_torpedo")
 
-func process(delta: float, player : CharacterBody2D) -> void:
+func process(_delta: float, player : CharacterBody2D) -> void:
 		if player.global_position < enemy.global_position:
 			Global.target_position = Vector2(player.position.x - 500, Global.original_position.y + rng.randf_range(-600, 200))
 		else :

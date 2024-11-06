@@ -1,5 +1,7 @@
 extends Enemy
 
+signal attacked(damage : int)
+
 @export var player : CharacterBody2D
 
 @onready var sprite_2d: Sprite2D = $Sprite2D
@@ -11,6 +13,7 @@ extends Enemy
 @onready var attack: AttackStateEnemy = $EnemyStateMachine/Attack
 @onready var land: LandStateEnemy = $EnemyStateMachine/Land
 @onready var torpedo: TorpedoStateEnemy = $EnemyStateMachine/Torpedo
+@onready var damaged: DamagedStateEnemy = $EnemyStateMachine/Damaged
 
 @onready var timer: Timer = $Timer
 
@@ -21,12 +24,20 @@ var is_go_to_ground : bool = false
 var is_attack : bool = false
 var is_torpedo : bool = false
 var is_landing : bool = false
+var is_damaged : bool = false
 
 var rng = RandomNumberGenerator.new()
 
 func _ready() -> void:
+	attacked.connect(on_attacked)
 	state_machine.switch_state(ground)
 	
+func on_attacked(hit_damage: int) -> void:
+	if !is_damaged:
+		healt -= hit_damage
+		state_machine.switch_state(damaged)
+		print("ennemy say : aie " + str(hit_damage) + ". healt in now "+str(healt))
+		
 func _process(delta: float) -> void:
 	state_machine.current_state.process(delta, player)
 	if !is_torpedo:

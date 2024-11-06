@@ -1,4 +1,4 @@
-[gd_scene load_steps=98 format=3 uid="uid://btwur6x4iye1t"]
+[gd_scene load_steps=116 format=3 uid="uid://btwur6x4iye1t"]
 
 [ext_resource type="Script" path="res://scenes/character/carrot.gd" id="1_v56mp"]
 [ext_resource type="Texture2D" uid="uid://dikbuprxnwao7" path="res://assets/enemies/carrot/__carrot_enemy_type_idle_in_ground_look_around_000.png" id="1_vvq5r"]
@@ -84,9 +84,26 @@
 [ext_resource type="Texture2D" uid="uid://ciuw34h7jmm3o" path="res://assets/enemies/carrot/__carrot_enemy_type_torpedo_transition_from_004.png" id="77_eg5y6"]
 [ext_resource type="Texture2D" uid="uid://do2bui2lbs3x6" path="res://assets/enemies/carrot/__carrot_enemy_type_torpedo_transition_from_005.png" id="78_h3b2d"]
 [ext_resource type="Texture2D" uid="uid://c01iyedjpsp6t" path="res://assets/enemies/carrot/__carrot_enemy_type_torpedo_transition_from_006.png" id="79_yx0hu"]
+[ext_resource type="Texture2D" uid="uid://wq7qctahfm24" path="res://assets/enemies/carrot/__carrot_enemy_type_whacked_000.png" id="80_3ioo7"]
+[ext_resource type="Texture2D" uid="uid://btgbi473q8rm" path="res://assets/enemies/carrot/__carrot_enemy_type_whacked_001.png" id="81_aso4j"]
+[ext_resource type="Texture2D" uid="uid://bgpoitw1yqt0g" path="res://assets/enemies/carrot/__carrot_enemy_type_whacked_002.png" id="82_1b0mi"]
+[ext_resource type="Texture2D" uid="uid://bfpudp0jf7wsn" path="res://assets/enemies/carrot/__carrot_enemy_type_whacked_003.png" id="83_o0sxh"]
+[ext_resource type="Texture2D" uid="uid://bfbnui3mo5wq0" path="res://assets/enemies/carrot/__carrot_enemy_type_whacked_004.png" id="84_qy0jp"]
+[ext_resource type="Texture2D" uid="uid://cbo6gx2q5kuhx" path="res://assets/enemies/carrot/__carrot_enemy_type_whacked_005.png" id="85_p7uoc"]
 [ext_resource type="Script" path="res://scripts/enemies/attack_state.gd" id="85_w0fma"]
 [ext_resource type="Script" path="res://scripts/enemies/torpedo_state.gd" id="86_23ahw"]
+[ext_resource type="Texture2D" uid="uid://l8chydj276wt" path="res://assets/enemies/carrot/__carrot_enemy_type_whacked_006.png" id="86_a1c86"]
 [ext_resource type="Script" path="res://scripts/enemies/land_state.gd" id="87_p1b01"]
+[ext_resource type="Texture2D" uid="uid://bba5j7ea0awxs" path="res://assets/enemies/carrot/__carrot_enemy_type_whacked_007.png" id="87_uk3vh"]
+[ext_resource type="Texture2D" uid="uid://cykicy6svjjdb" path="res://assets/enemies/carrot/__carrot_enemy_type_whacked_008.png" id="88_6wbmo"]
+[ext_resource type="Texture2D" uid="uid://bnv51lowjh240" path="res://assets/enemies/carrot/__carrot_enemy_type_whacked_009.png" id="89_4s8jn"]
+[ext_resource type="Texture2D" uid="uid://cdvidous36ve2" path="res://assets/enemies/carrot/__carrot_enemy_type_whacked_010.png" id="90_p3yqr"]
+[ext_resource type="Texture2D" uid="uid://cyurmtlcf2sna" path="res://assets/enemies/carrot/__carrot_enemy_type_whacked_011.png" id="91_l25fo"]
+[ext_resource type="Texture2D" uid="uid://wtggwypsyqcc" path="res://assets/enemies/carrot/__carrot_enemy_type_whacked_012.png" id="92_gpmds"]
+[ext_resource type="Texture2D" uid="uid://bn4ccaqyfi67d" path="res://assets/enemies/carrot/__carrot_enemy_type_whacked_013.png" id="93_cl0i1"]
+[ext_resource type="Texture2D" uid="uid://cd3yh812ak76l" path="res://assets/enemies/carrot/__carrot_enemy_type_whacked_014.png" id="94_pwrdq"]
+[ext_resource type="Texture2D" uid="uid://cc713wk7srbr7" path="res://assets/enemies/carrot/__carrot_enemy_type_whacked_015.png" id="95_kmm4b"]
+[ext_resource type="Script" path="res://scripts/enemies/damaged_state.gd" id="104_israh"]
 
 [sub_resource type="Animation" id="Animation_68i8e"]
 length = 0.001
@@ -105,6 +122,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_ypypw"]
 resource_name = "from_torpedo"
+length = 0.7
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -115,7 +133,7 @@ tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
-"update": 1,
+"update": 0,
 "values": [ExtResource("73_exaam"), ExtResource("74_3otj8"), ExtResource("75_sqctf"), ExtResource("76_lqage"), ExtResource("77_eg5y6"), ExtResource("78_h3b2d"), ExtResource("79_yx0hu")]
 }
 
@@ -171,20 +189,6 @@ tracks/0/keys = {
 "update": 0,
 "values": [ExtResource("30_llnk8"), ExtResource("31_m6akx"), ExtResource("32_2lcl0"), ExtResource("33_d0g28"), ExtResource("34_bk0xf"), ExtResource("35_sx7sn"), ExtResource("36_0i2cr"), ExtResource("37_nothh"), ExtResource("38_4iilx"), ExtResource("39_objbb"), ExtResource("40_v86ol"), ExtResource("41_tcq3m"), ExtResource("42_mx78y"), ExtResource("43_gni3w"), ExtResource("44_j5cap"), ExtResource("45_inceu"), ExtResource("46_c3f7u"), ExtResource("47_hgc4o"), ExtResource("48_h5log"), ExtResource("49_2j3hd")]
 }
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../EnemyStateMachine/OutOfGround")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(2),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"on_exit"
-}]
-}
 
 [sub_resource type="Animation" id="Animation_3td6b"]
 resource_name = "out_of_ground"
@@ -238,9 +242,27 @@ tracks/0/keys = {
 "values": [ExtResource("69_it6rh"), ExtResource("70_3dyjl"), ExtResource("71_4wvyl"), ExtResource("72_jo0wf")]
 }
 
+[sub_resource type="Animation" id="Animation_wdaxn"]
+resource_name = "damage"
+length = 1.6
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [ExtResource("80_3ioo7"), ExtResource("81_aso4j"), ExtResource("82_1b0mi"), ExtResource("83_o0sxh"), ExtResource("84_qy0jp"), ExtResource("85_p7uoc"), ExtResource("86_a1c86"), ExtResource("87_uk3vh"), ExtResource("88_6wbmo"), ExtResource("89_4s8jn"), ExtResource("90_p3yqr"), ExtResource("91_l25fo"), ExtResource("92_gpmds"), ExtResource("93_cl0i1"), ExtResource("94_pwrdq"), ExtResource("95_kmm4b")]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xm087"]
 _data = {
 "RESET": SubResource("Animation_68i8e"),
+"damage": SubResource("Animation_wdaxn"),
 "from_torpedo": SubResource("Animation_ypypw"),
 "go_to_ground": SubResource("Animation_5acc4"),
 "ground": SubResource("Animation_k3lul"),
@@ -300,6 +322,9 @@ script = ExtResource("86_23ahw")
 
 [node name="Land" type="Node" parent="EnemyStateMachine"]
 script = ExtResource("87_p1b01")
+
+[node name="Damaged" type="Node" parent="EnemyStateMachine"]
+script = ExtResource("104_israh")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 
