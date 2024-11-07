@@ -4,7 +4,8 @@ signal attacked(damage : int)
 
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var animation_player: AnimationPlayer = $Sprite2D/AnimationPlayer
-@onready var area: Area2D = $Area2D
+@onready var hit: Area2D = $Hit
+@onready var hurt: Area2D = $Hurt
 
 @onready var state_machine: PlayerStateMachine = $PlayerStateMachine
 
@@ -54,7 +55,8 @@ func _physics_process(delta: float) -> void:
 		
 	if Input.is_action_just_pressed("attack") and is_on_floor():
 		state_machine.switch_state(attack)
-		var detect_areas = area.get_overlapping_areas()
+		
+		var detect_areas = hurt.get_overlapping_areas()
 		for detect_area in detect_areas:
 			if detect_area.is_in_group("enemy"):
 				var enemy = detect_area.get_parent()

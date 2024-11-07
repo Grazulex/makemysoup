@@ -1,4 +1,4 @@
-[gd_scene load_steps=116 format=3 uid="uid://cofm71akoe8is"]
+[gd_scene load_steps=117 format=3 uid="uid://cofm71akoe8is"]
 
 [ext_resource type="Texture2D" uid="uid://2o0h40y4qydu" path="res://assets/character/__pauper_girl_light_skin_tone_idle_side_000.png" id="1_51r6m"]
 [ext_resource type="Script" path="res://scenes/character/player.gd" id="1_y82qu"]
@@ -328,6 +328,9 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jswc5"]
 size = Vector2(145.75, 422.25)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_7bq4u"]
+radius = 41.0488
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uw0r2"]
 size = Vector2(116, 52)
 
@@ -346,12 +349,21 @@ libraries = {
 }
 autoplay = "idle"
 
-[node name="Area2D" type="Area2D" parent="." groups=["player"]]
+[node name="Hit" type="Area2D" parent="." groups=["player"]]
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hit"]
 position = Vector2(0, -224)
 shape = SubResource("RectangleShape2D_jswc5")
+debug_color = Color(0.44527, 0.594792, 0.161123, 0.42)
+
+[node name="Hurt" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurt"]
+position = Vector2(145, -236)
+shape = SubResource("CircleShape2D_7bq4u")
+debug_color = Color(1, 0, 0, 0.419608)
 
 [node name="PlayerStateMachine" type="Node" parent="." node_paths=PackedStringArray("current_state", "player")]
 script = ExtResource("80_uebvf")
@@ -384,7 +396,7 @@ script = ExtResource("103_bi75h")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -39)
 shape = SubResource("RectangleShape2D_uw0r2")
-debug_color = Color(0.970136, 0.126886, 0.303562, 0.42)
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
 
 [node name="LabelStateDebug" type="Label" parent="."]
 offset_left = -73.0

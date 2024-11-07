@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=4 uid="uid://uak6s8goipbv"]
+[gd_scene load_steps=5 format=4 uid="uid://uak6s8goipbv"]
 
 [ext_resource type="PackedScene" uid="uid://cofm71akoe8is" path="res://scenes/character/player.tscn" id="1_e45lx"]
 [ext_resource type="TileSet" uid="uid://dm03vm0bcgler" path="res://resources/tiles/tiles_game_resources.tres" id="2_jm02k"]
 [ext_resource type="PackedScene" uid="uid://btwur6x4iye1t" path="res://scenes/character/carrot.tscn" id="3_nl2fm"]
+[ext_resource type="PackedScene" uid="uid://bo3qlkjp20pwr" path="res://scenes/character/tomato.tscn" id="4_0o4ph"]
 
 [node name="TestChapterScene" type="Node"]
 
@@ -28,3 +29,7 @@ position = Vector2(1422, 14)
 collision_mask = 17
 player = NodePath("../Player")
 healt = 300
+
+[node name="Tomato" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_0o4ph")]
+position = Vector2(598, 29)
+player = NodePath("../Player")

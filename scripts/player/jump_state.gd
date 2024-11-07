@@ -1,7 +1,7 @@
 extends State
 class_name JumpState
 
-@export var jump_velocity : float = -800.0
+@export var jump_velocity : float = -900.0
 
 func on_enter() -> void:
 	player.is_jumping = true
