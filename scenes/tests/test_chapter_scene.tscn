@@ -12,24 +12,26 @@ y_sort_enabled = true
 tile_map_data = PackedByteArray("AAD//wAAAgAAAAAAAAAAAAAAAgAAAAAAAAABAAAAAgAAAAAAAAACAAAAAgAAAAAAAAD+/wAAAgAAAAAAAAD9/wAAAgAAAAAAAAD8/wAAAgAAAAAAAAD7/wAAAgAAAAAAAAADAAAAAgAAAAAAAAAEAAAAAgAAAAAAAAAFAAAAAgAAAAAAAAAGAAAAAgAAAAAAAAAHAAAAAgAAAAAAAAD6/wAAAgAAAAAAAAA=")
 tile_set = ExtResource("2_jm02k")
 
-[node name="Player" parent="." instance=ExtResource("1_e45lx")]
+[node name="Entety Container" type="Node2D" parent="."]
+
+[node name="Player" parent="Entety Container" groups=["player"] instance=ExtResource("1_e45lx")]
 z_index = 2
 y_sort_enabled = true
 position = Vector2(-1340, -4)
 collision_mask = 18
 speed = 350.0
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
+[node name="Camera2D" type="Camera2D" parent="Entety Container/Player"]
 zoom = Vector2(0.3, 0.3)
 
-[node name="Carrot" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_nl2fm")]
+[node name="Tomato" parent="Entety Container" node_paths=PackedStringArray("player") instance=ExtResource("4_0o4ph")]
+position = Vector2(598, 29)
+player = NodePath("../Player")
+
+[node name="Carrot" parent="Entety Container" node_paths=PackedStringArray("player") instance=ExtResource("3_nl2fm")]
 z_index = 1
 y_sort_enabled = true
 position = Vector2(1422, 14)
 collision_mask = 17
 player = NodePath("../Player")
 healt = 300
-
-[node name="Tomato" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_0o4ph")]
-position = Vector2(598, 29)
-player = NodePath("../Player")

@@ -11,13 +11,16 @@ signal attacked(damage : int)
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var animation_tree: AnimationTree = $AnimationTree
 @onready var timer: Timer = $Timer
-@onready var ray_cast_2d: RayCast2D = $RayCast2D
-@onready var ray_cast_2d_2: RayCast2D = $RayCast2D2
+
+@onready var detection_ray_cast_right: RayCast2D = $Detection_Player/Detection_RayCast_Right
+@onready var detection_ray_cast_left: RayCast2D = $Detection_Player/Detection_RayCast_Left
+
 @onready var label: Label = $Label
 
 var is_moving = false
 var is_punch = false
 var is_whacking = false
+var is_die = false
 
 var direction : float = 0.0
 var rng = RandomNumberGenerator.new()
@@ -29,8 +32,11 @@ func _ready() -> void:
 	
 func on_attacked(hit_damage: int) -> void:
 		healt -= hit_damage
-		print("ennemy say : aie " + str(hit_damage) + ". healt in now "+str(healt))	
-		is_whacking = true
+		if healt <= 0:
+			is_die = true
+		else:
+			is_whacking = true
+		
 
 func _process(delta: float) -> void:
 	update_animation_parameters()
@@ -40,7 +46,7 @@ func _physics_process(delta: float) -> void:
 	if is_moving:
 		direction = Global.target_position.x
 		velocity = position.direction_to(Vector2(Global.target_position.x,0)) * speed
-		if (ray_cast_2d.is_colliding() && ray_cast_2d.get_collider().get_parent() == player) || (ray_cast_2d_2.is_colliding() &&  ray_cast_2d_2.get_collider().get_parent() == player):
+		if (detection_ray_cast_right.is_colliding() && detection_ray_cast_right.get_collider().get_parent() == player) || (detection_ray_cast_left.is_colliding() &&  detection_ray_cast_left.get_collider().get_parent() == player):
 			stop_moving()
 			is_punch = true
 		elif abs(Global.target_position.x - position.x) < 300:
@@ -71,15 +77,22 @@ func update_animation_parameters() -> void:
 	else:
 		animation_tree["parameters/conditions/is_whacking"] = false
 
+	if is_die:
+		animation_tree["parameters/conditions/is_die"] = true
+		await get_tree().create_timer(1).timeout
+		queue_free()
+		
+
 	if direction!= 0.0:
 		animation_tree["parameters/Idle/blend_position"] = direction
 		animation_tree["parameters/Punch/blend_position"] = direction
 		animation_tree["parameters/Whacked/blend_position"] = direction
 		animation_tree["parameters/Walk/blend_position"] = direction
+		animation_tree["parameters/Die/blend_position"] = direction
 
 
 func _on_timer_timeout() -> void:
-	if !is_moving:
+	if !is_moving && !is_whacking:
 		start_moving()
 		is_punch = false
 		timer.stop()
@@ -87,13 +100,13 @@ func _on_timer_timeout() -> void:
 		stop_moving()
 
 func start_moving() -> void:
-	ray_cast_2d.enabled = true
-	ray_cast_2d_2.enabled = true
+	detection_ray_cast_left.enabled = true
+	detection_ray_cast_right.enabled = true
 	is_moving = true
 	
 func stop_moving() -> void:
-	ray_cast_2d.enabled = false
-	ray_cast_2d_2.enabled = false
+	detection_ray_cast_right.enabled = false
+	detection_ray_cast_left.enabled = false
 	is_moving = false
 	reset_time()
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=90 format=3 uid="uid://bo3qlkjp20pwr"]
+[gd_scene load_steps=102 format=3 uid="uid://bo3qlkjp20pwr"]
 
 [ext_resource type="Script" path="res://scenes/character/tomato.gd" id="1_6yrwn"]
 [ext_resource type="Texture2D" uid="uid://biy848kcnjbpe" path="res://assets/enemies/beef_tomato_enemy/__beef_tomato_enemy_type_base_000.png" id="1_jlkp5"]
@@ -54,6 +54,12 @@
 [ext_resource type="Texture2D" uid="uid://cs60d6dfn1i7e" path="res://assets/enemies/beef_tomato_enemy/__beef_tomato_enemy_type_whacked_013.png" id="52_7a6as"]
 [ext_resource type="Texture2D" uid="uid://bfydkucuc888p" path="res://assets/enemies/beef_tomato_enemy/__beef_tomato_enemy_type_whacked_014.png" id="53_x1v2e"]
 [ext_resource type="Texture2D" uid="uid://p7ikyrpgqn7c" path="res://assets/enemies/beef_tomato_enemy/__beef_tomato_enemy_type_whacked_015.png" id="54_7wh6x"]
+[ext_resource type="Texture2D" uid="uid://dw2f0wqpwrv37" path="res://assets/enemies/beef_tomato_enemy/__beef_tomato_enemy_type_die_000.png" id="55_20kat"]
+[ext_resource type="Texture2D" uid="uid://di4gvah8ia8cc" path="res://assets/enemies/beef_tomato_enemy/__beef_tomato_enemy_type_die_001.png" id="56_wa5d0"]
+[ext_resource type="Texture2D" uid="uid://qcu1io2t3vg0" path="res://assets/enemies/beef_tomato_enemy/__beef_tomato_enemy_type_die_002.png" id="57_6iuyg"]
+[ext_resource type="Texture2D" uid="uid://co4epjeja26mj" path="res://assets/enemies/beef_tomato_enemy/__beef_tomato_enemy_type_die_003.png" id="58_k2vba"]
+[ext_resource type="Texture2D" uid="uid://dpf7fevw8lfa3" path="res://assets/enemies/beef_tomato_enemy/__beef_tomato_enemy_type_die_004.png" id="59_gptm1"]
+[ext_resource type="Texture2D" uid="uid://dp2wjykgljklk" path="res://assets/enemies/beef_tomato_enemy/__beef_tomato_enemy_type_die_005.png" id="60_hqln3"]
 
 [sub_resource type="Animation" id="Animation_b2pie"]
 length = 0.001
@@ -510,9 +516,69 @@ tracks/1/keys = {
 "values": [true]
 }
 
+[sub_resource type="Animation" id="Animation_2tt3q"]
+resource_name = "die_left"
+length = 0.6
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("55_20kat"), ExtResource("56_wa5d0"), ExtResource("57_6iuyg"), ExtResource("58_k2vba"), ExtResource("59_gptm1"), ExtResource("60_hqln3")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_vxyra"]
+resource_name = "die_right"
+length = 0.6
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("55_20kat"), ExtResource("56_wa5d0"), ExtResource("57_6iuyg"), ExtResource("58_k2vba"), ExtResource("59_gptm1"), ExtResource("60_hqln3")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_p5iel"]
 _data = {
 "RESET": SubResource("Animation_b2pie"),
+"die_left": SubResource("Animation_2tt3q"),
+"die_right": SubResource("Animation_vxyra"),
 "idle_left": SubResource("Animation_ij07y"),
 "idle_right": SubResource("Animation_clfq5"),
 "punch_left": SubResource("Animation_5etuj"),
@@ -525,6 +591,18 @@ _data = {
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d4gkf"]
 size = Vector2(421.5, 136.75)
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ous3c"]
+animation = &"die_left"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_hh5sa"]
+animation = &"die_right"
+
+[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_o6cdl"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_ous3c")
+blend_point_0/pos = -1.0
+blend_point_1/node = SubResource("AnimationNodeAnimation_hh5sa")
+blend_point_1/pos = 1.0
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_872yk"]
 animation = &"idle_left"
@@ -615,7 +693,13 @@ switch_mode = 2
 advance_mode = 2
 advance_condition = &"idle"
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_dgx84"]
+advance_mode = 2
+advance_condition = &"is_die"
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_8t6lo"]
+states/Die/node = SubResource("AnimationNodeBlendSpace1D_o6cdl")
+states/Die/position = Vector2(702, 263)
 states/Idle/node = SubResource("AnimationNodeBlendSpace1D_4fjeu")
 states/Idle/position = Vector2(402, 157)
 states/Punch/node = SubResource("AnimationNodeBlendSpace1D_yl3p0")
@@ -625,7 +709,7 @@ states/Walk/node = SubResource("AnimationNodeBlendSpace1D_1tgud")
 states/Walk/position = Vector2(591, 165)
 states/Whacked/node = SubResource("AnimationNodeBlendSpace1D_8gfcf")
 states/Whacked/position = Vector2(513, 263)
-transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_w34ex"), "Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_pvj21"), "Walk", "Idle", SubResource("AnimationNodeStateMachineTransition_rklrj"), "Idle", "Punch", SubResource("AnimationNodeStateMachineTransition_jowhy"), "Punch", "Idle", SubResource("AnimationNodeStateMachineTransition_bm4ko"), "Punch", "Walk", SubResource("AnimationNodeStateMachineTransition_uwl7a"), "Walk", "Punch", SubResource("AnimationNodeStateMachineTransition_lpi1e"), "Idle", "Whacked", SubResource("AnimationNodeStateMachineTransition_3g11t"), "Whacked", "Idle", SubResource("AnimationNodeStateMachineTransition_legww")]
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_w34ex"), "Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_pvj21"), "Walk", "Idle", SubResource("AnimationNodeStateMachineTransition_rklrj"), "Idle", "Punch", SubResource("AnimationNodeStateMachineTransition_jowhy"), "Punch", "Idle", SubResource("AnimationNodeStateMachineTransition_bm4ko"), "Punch", "Walk", SubResource("AnimationNodeStateMachineTransition_uwl7a"), "Walk", "Punch", SubResource("AnimationNodeStateMachineTransition_lpi1e"), "Idle", "Whacked", SubResource("AnimationNodeStateMachineTransition_3g11t"), "Whacked", "Idle", SubResource("AnimationNodeStateMachineTransition_legww"), "Idle", "Die", SubResource("AnimationNodeStateMachineTransition_dgx84")]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jtacw"]
 size = Vector2(196, 183)
@@ -634,7 +718,7 @@ size = Vector2(196, 183)
 radius = 88.0909
 
 [node name="Tomato" type="CharacterBody2D"]
-collision_layer = 2
+collision_layer = 8
 collision_mask = 16
 script = ExtResource("1_6yrwn")
 
@@ -659,16 +743,19 @@ root_node = NodePath("../Sprite2D")
 tree_root = SubResource("AnimationNodeStateMachine_8t6lo")
 anim_player = NodePath("../AnimationPlayer")
 parameters/conditions/idle = false
+parameters/conditions/is_die = false
 parameters/conditions/is_moving = false
 parameters/conditions/is_whacking = false
 parameters/conditions/punch = false
+parameters/Die/blend_position = 0
 parameters/Idle/blend_position = 0.0
 parameters/Punch/blend_position = 0
 parameters/Walk/blend_position = 0
 parameters/Whacked/blend_position = 0
 
 [node name="Hit" type="Area2D" parent="." groups=["enemy"]]
-collision_layer = 2
+collision_layer = 8
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hit"]
 position = Vector2(90, -300)
@@ -676,7 +763,8 @@ shape = SubResource("RectangleShape2D_jtacw")
 debug_color = Color(0.515954, 0.747268, 0, 0.42)
 
 [node name="Hurt" type="Area2D" parent="."]
-collision_layer = 2
+collision_layer = 8
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurt"]
 position = Vector2(-373, -191)
@@ -684,17 +772,21 @@ shape = SubResource("CircleShape2D_iiofo")
 disabled = true
 debug_color = Color(1, 0, 0, 0.419608)
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Detection_Player" type="Node2D" parent="."]
 
-[node name="RayCast2D" type="RayCast2D" parent="."]
-position = Vector2(-2, -129)
-target_position = Vector2(-400, 0)
-collide_with_areas = true
-
-[node name="RayCast2D2" type="RayCast2D" parent="."]
-position = Vector2(-2, -129)
+[node name="Detection_RayCast_Right" type="RayCast2D" parent="Detection_Player"]
+position = Vector2(0, -120)
 target_position = Vector2(400, 0)
+collision_mask = 2
 collide_with_areas = true
+
+[node name="Detection_RayCast_Left" type="RayCast2D" parent="Detection_Player"]
+position = Vector2(0, -120)
+target_position = Vector2(-400, 0)
+collision_mask = 2
+collide_with_areas = true
+
+[node name="Timer" type="Timer" parent="."]
 
 [node name="Label" type="Label" parent="."]
 offset_left = -228.0

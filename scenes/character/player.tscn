@@ -335,6 +335,7 @@ radius = 41.0488
 size = Vector2(116, 52)
 
 [node name="Player" type="CharacterBody2D"]
+collision_layer = 2
 collision_mask = 16
 script = ExtResource("1_y82qu")
 speed = 450.0
@@ -350,7 +351,8 @@ libraries = {
 autoplay = "idle"
 
 [node name="Hit" type="Area2D" parent="." groups=["player"]]
-collision_mask = 2
+collision_layer = 2
+collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hit"]
 position = Vector2(0, -224)
@@ -358,7 +360,8 @@ shape = SubResource("RectangleShape2D_jswc5")
 debug_color = Color(0.44527, 0.594792, 0.161123, 0.42)
 
 [node name="Hurt" type="Area2D" parent="."]
-collision_mask = 2
+collision_layer = 2
+collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurt"]
 position = Vector2(145, -236)
